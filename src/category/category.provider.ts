@@ -1,11 +1,10 @@
-import { Connection } from 'mongoose';
+import { model } from 'mongoose';
 import { CategorySchema } from './category.schema';
 
 export const categoryProvider = [
   {
-    provide: 'Category',
-    useFactory: (connection: Connection) =>
-      connection.model('Category', CategorySchema),
+    provide: 'CATEGORY_MODEL',
+    useFactory: () => model('Category', CategorySchema),
     inject: [],
   },
 ];

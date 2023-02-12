@@ -1,11 +1,10 @@
-import { Connection } from 'mongoose';
+import { model } from 'mongoose';
 import { ProductSchema } from './product.schema';
 
-export const categoryProvider = [
+export const productProvider = [
   {
-    provide: 'Product',
-    useFactory: (connection: Connection) =>
-      connection.model('Product', ProductSchema),
+    provide: 'PRODUCT_MODEL',
+    useFactory: () => model('Product', ProductSchema),
     inject: [],
   },
 ];
