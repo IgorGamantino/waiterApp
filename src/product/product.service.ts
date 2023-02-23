@@ -14,8 +14,13 @@ export class ProductService {
     return await this.productModel.find();
   }
 
-  async createProduct(createProduct: ProductDto): Promise<void> {
-    const createdProduct = new this.productModel(createProduct);
+  async createProduct(createProduct: ProductDto, file): Promise<void> {
+    const createdProductWithFile = {
+      ...createProduct,
+      imagePath: file.path,
+    };
+
+    const createdProduct = new this.productModel(createdProductWithFile);
 
     await createdProduct.save();
   }
