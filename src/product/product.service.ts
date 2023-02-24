@@ -24,4 +24,8 @@ export class ProductService {
 
     await createdProduct.save();
   }
+
+  async findCategoryById(categoryId: string): Promise<any> {
+    return await this.productModel.find().where('category').equals(categoryId);
+  }
 }
